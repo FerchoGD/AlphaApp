@@ -559,11 +559,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\ferch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ferch\\AppData\\Roaming\\NuGet\\NuGet.Config"

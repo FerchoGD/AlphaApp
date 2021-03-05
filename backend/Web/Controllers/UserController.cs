@@ -1,4 +1,5 @@
 ﻿using Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Controllers.Models;
 
@@ -15,6 +16,7 @@ namespace Web.Controllers
             _userService = userService;
         }
         
+        [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateDto data)
         {

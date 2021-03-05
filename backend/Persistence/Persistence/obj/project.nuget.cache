@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yO/wAtHwxm1Q+hoy4bKNrodAorHsKiv3f+Yq9FHYJmeZ1kgSOIUvP7qWTib0uzYEJWvBbwz4ykHwnkAYxL5UlQ==",
+  "dgSpecHash": "TL54/PDBh5cU0RRyF8l7UBj6QBHhkAc59Eut/HIPEc/8ZVEAt4jWKlsTk5639R9bqIlc6PANPdngpHZa5KJ46w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\Persistence.csproj",
+  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.3\\microsoft.entityframeworkcore.5.0.3.nupkg.sha512",
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.3\\microsoft.entityframeworkcore.abstractions.5.0.3.nupkg.sha512",

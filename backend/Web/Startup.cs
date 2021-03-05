@@ -21,7 +21,13 @@ namespace MVM
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options => options.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000")
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            }));
             services.AddControllers();
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
@@ -36,10 +42,7 @@ namespace MVM
             app.UseRouting();
 
             // global cors policy
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            app.UseCors("MyPolicy");
 
             // custom jwt auth middleware
             app.UseMiddleware<JwtMiddleware>();

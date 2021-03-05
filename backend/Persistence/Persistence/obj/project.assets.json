@@ -578,11 +578,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\Persistence.csproj",
       "projectName": "Persistence",
-      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\Persistence.csproj",
+      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\Persistence.csproj",
       "packagesPath": "C:\\Users\\ferch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\obj\\",
+      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ferch\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -596,8 +596,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\Domain.csproj"
+            "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj"
             }
           }
         }

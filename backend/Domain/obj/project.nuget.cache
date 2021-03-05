@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dRxMhG8OsY3r3zNcGYCfo9PQTixWUUPDVHGFx8W/a/9XaVxP6KlC36WiwFpFThK8gnpTjnZj51lEU5LhGriS9w==",
+  "dgSpecHash": "5GsQryFjuKB/ytrKFoj6MJXOXPDeSrX3uyEhMTVBeWm5AaYkTmGolDvqa0V2kZZ68fXSzwobSCi7TyDFqNc89g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.3\\microsoft.entityframeworkcore.5.0.3.nupkg.sha512",
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.3\\microsoft.entityframeworkcore.abstractions.5.0.3.nupkg.sha512",

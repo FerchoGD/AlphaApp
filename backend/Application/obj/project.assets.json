@@ -4306,6 +4306,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
       "Microsoft.EntityFrameworkCore.InMemory >= 5.0.3",
       "Persistence >= 1.0.0",
@@ -4318,11 +4319,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Application\\Application.csproj",
+      "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\ferch\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Application\\obj\\",
+      "outputPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ferch\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -4336,8 +4337,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\Persistence.csproj": {
-              "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Persistence\\Persistence\\Persistence.csproj"
+            "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\Persistence.csproj": {
+              "projectPath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Persistence\\Persistence\\Persistence.csproj"
             }
           }
         }

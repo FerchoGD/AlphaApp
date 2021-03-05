@@ -1224,6 +1224,7 @@
       },
       "Application/1.0.0": {
         "dependencies": {
+          "Domain": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
           "Microsoft.EntityFrameworkCore.InMemory": "5.0.3",
           "Persistence": "1.0.0",

@@ -49,6 +49,7 @@ namespace Application.Services.UserService
         {
             _appSettings = appSettings.Value;
         }
+        
         public UserDto Authenticate(string email, string password)
         {
 

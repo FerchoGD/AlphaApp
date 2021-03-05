@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "r6KstBJo1AqXXePBWbe+NwqWxNCAAMvxNco2CmfwG9Mk0N3n7cId9X4uJru8ss8mZ3n1fYy+BX4K1wxc8ycvrQ==",
+  "dgSpecHash": "mo5WIdIg0+OKIBiIRBLUMD5kbyC1XlTNhWN1duCz3e0kwvqFh6oYZiQflJ+xnkxyVYCxjhZCXVcdwdxhIFaguQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\MVM App\\Web\\MVM.csproj",
+  "projectFilePath": "C:\\Users\\ferch\\Documents\\TI Practices\\AlphaApp\\backend\\Web\\MVM.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\ferch\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
