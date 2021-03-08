@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+const API_KEY = "this is my custom Secret key for authentication"
 
 export default function Index() {
     const [email, setEmail] = useState('')
@@ -12,11 +13,11 @@ export default function Index() {
         fetch('https://localhost:5001/api/users/authenticate', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin' : '*'
             },
             body: JSON.stringify(payload)
         })
-            .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => alert(error))
 

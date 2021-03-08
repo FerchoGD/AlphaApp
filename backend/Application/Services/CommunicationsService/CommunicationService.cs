@@ -65,7 +65,32 @@ namespace Application.Services.CommunicationsService
                 })
                 .Single();
         }
-        
+
+        public List<CommunicationDto> GetAll()
+        {
+            return _externalCommunications
+                .Select(x => new CommunicationDto
+                {
+                    Id = x.Id,
+                    TenantId = x.TenantId,
+                    Record = x.Record,
+                    SenderName = x.Sender.FullName,
+                    ReceiverName = x.Receiver.FullName,
+                    CreatedOn = x.CreatedOn
+                })
+                .Concat(_internalCommunications
+                    .Select(x => new CommunicationDto
+                    {
+                        Id = x.Id,
+                        TenantId = x.TenantId,
+                        Record = x.Record,
+                        SenderName = x.Sender.FullName,
+                        ReceiverName = x.Receiver.FullName,
+                        CreatedOn = x.CreatedOn
+                    }))
+                .ToList();
+        }
+
         public string Delete(string record)
 
         {

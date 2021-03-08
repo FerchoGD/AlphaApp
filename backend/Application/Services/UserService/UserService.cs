@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -52,14 +53,6 @@ namespace Application.Services.UserService
         
         public UserDto Authenticate(string email, string password)
         {
-
-            foreach (var u in _users)
-            {
-                Console.WriteLine(u.Email);
-            }
-            
-            Console.WriteLine($"{email}");
-
             var user = _users
                 .SingleOrDefault(x => x.Email == email && x.Password == password);
 
@@ -102,6 +95,19 @@ namespace Application.Services.UserService
                     Role = x.Role.ToString()
                 })
                 .ToList();
+        }
+
+        public User Create(NewUserDto data)
+        {
+            var newUser = new User(1);
+            newUser.Email = data.Email;
+            newUser.FullName = data.FullName;
+            newUser.Role = data.Role;
+            newUser.Password = data.PassWord;
+            
+            _users.Add(newUser);
+
+            return newUser;
         }
         
         

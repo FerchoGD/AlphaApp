@@ -1,5 +1,5 @@
-﻿using Application.Services.CommunicationsService.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Application.Services.CommunicationsService.Models;
 
 namespace Application.Services.Interfaces
 {
@@ -7,6 +7,7 @@ namespace Application.Services.Interfaces
     {
         string CreateCommunication(CreateCommunicationDto data);
         CommunicationDto GetByRecord(string record);
+        List<CommunicationDto> GetAll();
         string Delete(string record);
     }
 }
