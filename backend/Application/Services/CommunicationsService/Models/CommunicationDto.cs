@@ -5,7 +5,6 @@ namespace Application.Services.CommunicationsService.Models
     public class CommunicationDto
     {
         public int Id { get; set; }
-        public int TenantId { get; set; }
         public string Record { get; set; }
         public int SenderId { get; set; }
         public string SenderName { get; set; }

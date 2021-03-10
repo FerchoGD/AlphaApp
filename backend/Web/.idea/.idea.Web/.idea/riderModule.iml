@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$/../../../../MVM App" />
     <content url="file://$MODULE_DIR$/../../../Application" />
     <content url="file://$MODULE_DIR$/../../../Domain" />
+    <content url="file://$MODULE_DIR$/../../../Persistence/Persistence" />
     <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -16,10 +16,10 @@ namespace Web.Controllers
             _mvmService = mvmService;
         }
         
-        [HttpGet("id")]
-        public IActionResult Get(string id)
+        [HttpGet("{record}")]
+        public IActionResult Get(string record)
         {
-            var response = _mvmService.GetByRecord(id);
+            var response = _mvmService.GetByRecord(record);
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
@@ -41,17 +41,17 @@ namespace Web.Controllers
         {
             var response = _mvmService.CreateCommunication(data);
             if (response == null)
-                return BadRequest(new { message = "Username information is incorrect" });
+                return BadRequest(new { message = "Information is incorrect" });
 
             return Ok(response);
         }
         
-        [HttpDelete("record")]
-        public IActionResult Delete(string record)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
-            var response = _mvmService.Delete(record);
+            var response = _mvmService.Delete(id);
             if (response == null)
-                return BadRequest(new { message = "Username information is incorrect" });
+                return BadRequest(new { message = "Information is incorrect" });
 
             return Ok(response);
         }

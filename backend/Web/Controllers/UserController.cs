@@ -1,5 +1,4 @@
-﻿using System;
-using Application.Services.Interfaces;
+﻿using Application.Services.Interfaces;
 using Application.Services.UserService.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +27,9 @@ namespace Web.Controllers
 
             return Ok(response);
         }
-
-        [HttpGet("id")]
+        
+        [Authorize]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             var response = _userService.GetById(id);
@@ -39,6 +39,7 @@ namespace Web.Controllers
             return Ok(response);
         }
         
+        [Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {

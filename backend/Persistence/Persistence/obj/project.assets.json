@@ -569,7 +569,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Domain >= 1.0.0",
-      "Microsoft.EntityFrameworkCore.InMemory >= 5.0.3"
+      "Microsoft.EntityFrameworkCore >= 5.0.3"
     ]
   },
   "packageFolders": {
@@ -611,7 +611,7 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.InMemory": {
+          "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.3, )"
           }

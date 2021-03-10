@@ -3,11 +3,13 @@ using Application.Services.Interfaces;
 using Application.Services.UserService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVM.Helpers;
 using Newtonsoft.Json;
+using Persistence.Context;
 
 namespace MVM
 {
@@ -37,6 +39,8 @@ namespace MVM
                 });
             
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddDbContext<AlphaContext>(options =>
+                options.UseInMemoryDatabase(databaseName: "Test"));
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
@@ -53,6 +57,7 @@ namespace MVM
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             // global cors policy

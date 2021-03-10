@@ -8,6 +8,6 @@ namespace Application.Services.Interfaces
         string CreateCommunication(CreateCommunicationDto data);
         CommunicationDto GetByRecord(string record);
         List<CommunicationDto> GetAll();
-        string Delete(string record);
+        string Delete(int id);
     }
 }

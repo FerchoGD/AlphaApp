@@ -1142,7 +1142,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Domain": "1.0.0",
-          "Microsoft.EntityFrameworkCore.InMemory": "5.0.3"
+          "Microsoft.EntityFrameworkCore": "5.0.3"
         },
         "compile": {
           "bin/placeholder/Persistence.dll": {}

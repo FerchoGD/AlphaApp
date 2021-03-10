@@ -5,12 +5,14 @@
         private User()
         { }
 
-        public User(int tenantId)
+        public User(string fullname, string email, Role role, string password)
         {
-            TenantId = tenantId;
+            FullName = fullname;
+            Email = email;
+            Role = role;
+            Password = password;
         }
         
-        public int TenantId { get; set; }
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Email { get; set; }

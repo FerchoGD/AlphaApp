@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-const API_KEY = "this is my custom Secret key for authentication"
 
 export default function Index() {
     const [email, setEmail] = useState('')

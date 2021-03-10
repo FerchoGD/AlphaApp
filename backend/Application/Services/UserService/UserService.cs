@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -11,49 +10,25 @@ using Domain.Users;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MVM.Helpers;
+using Persistence.Context;
 
 
 namespace Application.Services.UserService
 {
     public class UserService : IUserService
     {
+        private readonly AlphaContext _context;
         private readonly AppSettings _appSettings;
-        public List<User> _users = new List<User>
-        {
-            new User(1)
-            {
-                Id = 1,
-                FullName = "Fernando Administrador",
-                Email = "fercho@gmail.com",
-                Role = Role.Admin,
-                Password = "lolita"
-            },
-            new User(1)
-            {
-                Id = 2,
-                FullName = "Usuario Manager",
-                Email = "manager@gmail.com",
-                Role = Role.Manager,
-                Password = "manager@12345"
-            },
-            new User(1)
-            {
-                Id = 3,
-                FullName = "Usuario consulta",
-                Email = "consulta@gmail.com",
-                Role = Role.Destinater,
-                Password = "consulta@12345"
-            }
-        };
 
-        public UserService(IOptions<AppSettings> appSettings)
+        public UserService(AlphaContext context, IOptions<AppSettings> appSettings)
         {
+            _context = context;
             _appSettings = appSettings.Value;
         }
         
         public UserDto Authenticate(string email, string password)
         {
-            var user = _users
+            var user = _context.Users
                 .SingleOrDefault(x => x.Email == email && x.Password == password);
 
             if (user is null) return null;
@@ -72,7 +47,7 @@ namespace Application.Services.UserService
         
         public UserDto GetById(int id)
         {
-            return _users
+            return _context.Users
                 .Where(x => x.Id == id)
                 .Select(x => new UserDto
                 {
@@ -86,7 +61,7 @@ namespace Application.Services.UserService
         
         public List<UserDto> GetAll()
         {
-            return _users
+            return _context.Users
                 .Select(x => new UserDto
                 {
                     Id = x.Id,
@@ -99,13 +74,10 @@ namespace Application.Services.UserService
 
         public User Create(NewUserDto data)
         {
-            var newUser = new User(1);
-            newUser.Email = data.Email;
-            newUser.FullName = data.FullName;
-            newUser.Role = data.Role;
-            newUser.Password = data.PassWord;
-            
-            _users.Add(newUser);
+            var newUser = new User(data.FullName, data.Email, data.Role, data.PassWord);
+
+            _context.Add(newUser);
+            _context.SaveChanges();
 
             return newUser;
         }

@@ -3,113 +3,77 @@ using System.Linq;
 using Application.Services.CommunicationsService.Models;
 using Application.Services.Interfaces;
 using Domain.Communications;
+using Persistence.Context;
 
 namespace Application.Services.CommunicationsService
 {
     public class CommunicationService : ICommunicationsService
     {
-        public List<Communication> _externalCommunications = new List<Communication>();
-        public List<Communication> _internalCommunications = new List<Communication>();
+        private readonly AlphaContext _context;
+
+        public CommunicationService(AlphaContext context)
+        {
+            _context = context;
+        }
         
         
         public string CreateCommunication(CreateCommunicationDto data)
         {
-            var record = "";
+            var communicationForType = _context.Communications
+                .Where(x => x.Type == data.Type);
+            
+            var record = data.Type == Type.External
+                ? $"CE00000{communicationForType.Count() + 1}"
+                : $"CI00000{communicationForType.Count() + 1}";
 
-            if (data.Type == Type.External)
-            {
-                record = $"CE000000{_externalCommunications.Count + 1}";
-                var communication  = new Communication(1, record, data.SenderId, data.ReceiverId, data.Type);
-            
-                _externalCommunications.Add(communication);   
-            }
-            else
-            {
-                record = $"CI000000{_internalCommunications.Count + 1}";
-                var communication  = new Communication(1, record, data.SenderId, data.ReceiverId, data.Type);
-            
-                _internalCommunications.Add(communication);
-            }
+            var newCommunication = new Communication(record, data.SenderId, data.ReceiverId, data.Type);
+            _context.Add(newCommunication);
+
+            _context.SaveChanges();
 
             return record;
         }
 
         public CommunicationDto GetByRecord(string record)
         {
-            if (record.Contains("CI"))
-            {
-                return _internalCommunications
-                    .Where(x => x.Record == record)
-                    .Select(x => new CommunicationDto
-                    {
-                        Id = x.Id,
-                        TenantId = x.TenantId,
-                        Record = x.Record,
-                        SenderName = x.Sender.FullName,
-                        ReceiverName = x.Receiver.FullName,
-                        CreatedOn = x.CreatedOn
-                    })
-                    .Single();
-            }
-            
-            return _externalCommunications
-                .Where(x => x.Record == record)
+            return _context.Communications
+                .Where(x => x.Record == record && !x.IsDeleted)
                 .Select(x => new CommunicationDto
                 {
                     Id = x.Id,
-                    TenantId = x.TenantId,
                     Record = x.Record,
+                    SenderId = x.SenderId,
                     SenderName = x.Sender.FullName,
+                    ReceiverId = x.ReceiverId,
                     ReceiverName = x.Receiver.FullName,
                     CreatedOn = x.CreatedOn
                 })
-                .Single();
+                .SingleOrDefault();
         }
 
         public List<CommunicationDto> GetAll()
         {
-            return _externalCommunications
+            return _context.Communications
+                .Where(x => !x.IsDeleted)
                 .Select(x => new CommunicationDto
                 {
                     Id = x.Id,
-                    TenantId = x.TenantId,
                     Record = x.Record,
+                    SenderId = x.SenderId,
                     SenderName = x.Sender.FullName,
+                    ReceiverId = x.ReceiverId,
                     ReceiverName = x.Receiver.FullName,
                     CreatedOn = x.CreatedOn
                 })
-                .Concat(_internalCommunications
-                    .Select(x => new CommunicationDto
-                    {
-                        Id = x.Id,
-                        TenantId = x.TenantId,
-                        Record = x.Record,
-                        SenderName = x.Sender.FullName,
-                        ReceiverName = x.Receiver.FullName,
-                        CreatedOn = x.CreatedOn
-                    }))
                 .ToList();
         }
 
-        public string Delete(string record)
-
+        public string Delete(int id)
         {
-            Communication toDelete = null;
-            
-            if (record.Contains("CI"))
-            {
-                toDelete = _internalCommunications
-                    .SingleOrDefault(x => x.Record == record);
+            var communicationToDelete = _context.Communications
+                .SingleOrDefault(x => x.Id == id);
 
-                _internalCommunications.Remove(toDelete);
-            }
-            else
-            {
-                toDelete = _externalCommunications
-                    .SingleOrDefault(x => x.Record == record);
-                _externalCommunications.Remove(toDelete);
-            }
-
+            if (communicationToDelete is null) return "Not Found";
             return "Ok";
         }
     }

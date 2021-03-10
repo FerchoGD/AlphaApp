@@ -8,9 +8,8 @@ namespace Domain.Communications
         private Communication()
         { }
 
-        public Communication(int tenantId, string record, int senderId, int receiverId, Type type)
+        public Communication(string record, int senderId, int receiverId, Type type)
         {
-            TenantId = tenantId;
             Record = record;
             SenderId = senderId;
             ReceiverId = receiverId;
@@ -27,5 +26,6 @@ namespace Domain.Communications
         public int ReceiverId { get; set; }
         public Type Type { get; set; }
         public DateTimeOffset CreatedOn { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }
