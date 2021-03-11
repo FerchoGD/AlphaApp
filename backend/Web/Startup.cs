@@ -39,9 +39,11 @@ namespace MVM
                 });
             
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            
             services.AddDbContext<AlphaContext>(options =>
-                options.UseInMemoryDatabase(databaseName: "Test"));
-
+                options.UseNpgsql(Configuration.GetConnectionString("Default")));
+            //services.AddDbContext<AlphaContext>(options => options.UseInMemoryDatabase(databaseName: "Test"));
+            
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICommunicationsService, CommunicationService>();

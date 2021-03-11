@@ -28,7 +28,6 @@ namespace Web.Controllers
             return Ok(response);
         }
         
-        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -39,7 +38,6 @@ namespace Web.Controllers
             return Ok(response);
         }
         
-        [Authorize]
         [HttpGet]
         public IActionResult GetAll()
         {

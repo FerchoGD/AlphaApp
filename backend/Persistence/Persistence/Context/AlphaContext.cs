@@ -11,5 +11,11 @@ namespace Persistence.Context
 
         public DbSet<User> Users { get; set; }
         public DbSet<Communication> Communications { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<Communication>().ToTable("Communications");
+        }
     }
 }

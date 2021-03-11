@@ -10,3 +10,6 @@ C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\o
 C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\obj\Debug\netcoreapp3.1\Persistence.csproj.CopyComplete
 C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\obj\Debug\netcoreapp3.1\Persistence.dll
 C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\obj\Debug\netcoreapp3.1\Persistence.pdb
+C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.json
+C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\bin\Debug\netcoreapp3.1\Persistence.runtimeconfig.dev.json
+C:\Users\ferch\Documents\TI Practices\AlphaApp\backend\Persistence\Persistence\obj\Debug\netcoreapp3.1\Persistence.genruntimeconfig.cache
