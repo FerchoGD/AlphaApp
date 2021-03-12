@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Application.Services.CommunicationsService.Models;
 using Application.Services.Interfaces;
 using Domain.Communications;
 using Persistence.Context;
+using Type = Domain.Communications.Type;
 
 namespace Application.Services.CommunicationsService
 {
@@ -16,22 +18,45 @@ namespace Application.Services.CommunicationsService
             _context = context;
         }
         
+        [Serializable]
+        class InvalidSenderOrReceiverException : Exception
+        {
+            public InvalidSenderOrReceiverException()
+            { }
+
+            public InvalidSenderOrReceiverException(int sender, int receiver)
+                : base(String.Format($"Invalid IDs: Sender {sender}, Receiver {receiver}"))
+            { }
+        }
+        
         
         public string CreateCommunication(CreateCommunicationDto data)
         {
-            var communicationForType = _context.Communications
-                .Where(x => x.Type == data.Type);
-            
-            var record = data.Type == Type.External
-                ? $"CE00000{communicationForType.Count() + 1}"
-                : $"CI00000{communicationForType.Count() + 1}";
+            try
+            {
+                if (data.SenderId < 1 || data.ReceiverId < 1)
+                    throw new InvalidSenderOrReceiverException(data.SenderId, data.ReceiverId);
+                
+                var communicationForType = _context.Communications
+                    .Where(x => x.Type == data.Type);
 
-            var newCommunication = new Communication(record, data.SenderId, data.ReceiverId, data.Type);
-            _context.Add(newCommunication);
+                var record = data.Type == Type.External
+                    ? $"CE00000{communicationForType.Count() + 1}"
+                    : $"CI00000{communicationForType.Count() + 1}";
+                
+                
 
-            _context.SaveChanges();
+                var newCommunication = new Communication(record, data.SenderId, data.ReceiverId, data.Type);
+                _context.Add(newCommunication);
 
-            return record;
+                _context.SaveChanges();
+
+                return record;
+            }
+            catch(InvalidSenderOrReceiverException exception)
+            {
+                return exception.Message;
+            }
         }
 
         public CommunicationDto GetByRecord(string record)
@@ -70,15 +95,24 @@ namespace Application.Services.CommunicationsService
 
         public string Delete(int id)
         {
-            var communicationToDelete = _context.Communications
-                .SingleOrDefault(x => x.Id == id);
 
-            if (communicationToDelete is null) return "Not Found";
+            try
+            {
+                var communicationToDelete = _context.Communications
+                    .SingleOrDefault(x => x.Id == id);
 
-            communicationToDelete.IsDeleted = true;
+                if (communicationToDelete is null) return "Not Found";
 
-            _context.SaveChanges();
-            return "Ok";
+                communicationToDelete.IsDeleted = true;
+
+                _context.SaveChanges();
+                return "Ok";
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
     }
 }
