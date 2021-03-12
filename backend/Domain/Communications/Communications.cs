@@ -17,7 +17,6 @@ namespace Domain.Communications
             CreatedOn = DateTimeOffset.Now;
         }
         
-        public int TenantId { get; set; }
         public int Id { get; set; }
         public string Record { get; set; }
         public User Sender { get; set; }

@@ -16,12 +16,12 @@ namespace Web.Controllers
             _mvmService = mvmService;
         }
         
-        [HttpGet("{record}")]
-        public IActionResult Get(string record)
+        [HttpGet("single")]
+        public IActionResult Get([FromQuery] string record)
         {
             var response = _mvmService.GetByRecord(record);
             if (response == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest(new { message = "Not data" });
 
             return Ok(response);
         }
@@ -31,7 +31,7 @@ namespace Web.Controllers
         {
             var response = _mvmService.GetAll();
             if (response == null)
-                return BadRequest(new { message = "Error in data" });
+                return BadRequest(new { message = "No data" });
 
             return Ok(response);
         }
@@ -46,7 +46,7 @@ namespace Web.Controllers
             return Ok(response);
         }
         
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public IActionResult Delete(int id)
         {
             var response = _mvmService.Delete(id);

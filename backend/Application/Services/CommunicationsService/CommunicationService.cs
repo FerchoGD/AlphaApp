@@ -74,6 +74,10 @@ namespace Application.Services.CommunicationsService
                 .SingleOrDefault(x => x.Id == id);
 
             if (communicationToDelete is null) return "Not Found";
+
+            communicationToDelete.IsDeleted = true;
+
+            _context.SaveChanges();
             return "Ok";
         }
     }
